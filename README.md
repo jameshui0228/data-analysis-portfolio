@@ -33,6 +33,7 @@
 | SSG 외국인 선수 영입 분석 | KBO/MLB/MiLB/NPB/기사 데이터 기반 영입 랭킹 프레임 설계 | [요약](projects/kbo-foreign-player-recruitment.md) |
 | DACON 모기 비행 궤적 예측 | 물리 baseline, trajectory feature, KNN memory selector 기반 AI 경진대회 | [요약](projects/dacon-mosquito-trajectory.md) |
 | 스마트 창고 출고 지연 예측 | scenario/layout 검증, route/residual 모델, 과적합 진단 | [요약](projects/smart-warehouse-delay.md) |
+| BARAM 2026 풍력발전량 예측 | 시간 순서·FiCR 검증, forecast-only foundation, Public 직렬 실험과 리스크 회고 | [요약](projects/baram-2026-wind-power-forecast.md) |
 | K리그 승부 예측 | K리그 경기 데이터 기반 분류 모델 비교 및 변수 중요도 분석 | [요약](projects/k-league-prediction.md) |
 
 ## 공개 정책
