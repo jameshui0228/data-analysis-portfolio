@@ -1,36 +1,39 @@
-# 근거와 공개 범위
+# Evidence & Disclosure
 
-이 문서는 포트폴리오에서 무엇을 확인할 수 있는지, 무엇을 별도로 검증해야 하는지 정리합니다.
+[Portfolio](../README.md) · [한국어](evidence-and-scope.ko.md)
 
-## 기록 원칙
+This guide explains what the portfolio demonstrates and what requires separate verification.
 
-1. 프로젝트의 질문·접근·결과와 개인 역할을 나눠 설명합니다.
-2. 학습 데이터 성능, 교차검증 성능, Public 리더보드 점수, 최종 순위를 섞지 않습니다.
-3. 성능 개선 수치는 같은 데이터·분할·지표인지 확인한 경우에만 직접 비교합니다.
-4. AI 보조 개발을 숨기거나 모든 코드를 독립적으로 작성했다고 주장하지 않습니다.
-5. 공동 프로젝트 전체와 개인 계정의 변경 이력은 같은 의미가 아닙니다.
-6. 과거 시점의 후보·계약·시장 정보는 현재 정보로 소개하지 않습니다.
+## Reporting Principles
 
-## 사례별 증빙
+1. Describe the question, approach, outcome, and individual role separately.
+2. Distinguish training performance, cross-validation, public leaderboard scores, and final rankings.
+3. Compare improvements directly only when the data, split, and metric are comparable.
+4. Disclose AI-assisted development without presenting all code as unaided work.
+5. Do not equate a team's output with one account's commit history.
+6. Date historical candidate, contract, and market information instead of presenting it as current.
 
-| 사례 | 공개 증빙 | 공개하지 않거나 아직 확인하지 않은 부분 |
+## Evidence by Case Study
+
+| Case | Public Evidence | Private or Unverified Scope |
 |---|---|---|
-| SSG 분석 | 코드, 결과 CSV, 최종 보고서, 발표, 검증·변경 기록 | 별도 원자료, 실제 구단 채택·영입 성과 |
-| SDA | 운영 사이트, 활동·프로젝트·매거진 | 회원 개인정보, 관리자 계정, 비공개 운영 저장소 |
-| AI 조사 도구 | 코드, 설치 안내, 테스트, 오프라인 실행 예제 | 개인 조사 데이터, 실측하지 않은 사업 성과 |
-| Statiz·창고·모기·풍력 | 공개 가능한 문제·접근·결과·회고 | 원자료·인증정보·비공개 제출 이력, 요약 외 외부 검증 |
-| MLB 군집화 | 분석 요약, SDA 공개 프로젝트 아카이브 | 잠재공간 점수와 실제 전략 효과의 동일시 |
-| K리그 | 분류 모델 학습 기록 | 입력 시점·분할 재확인 전의 사전 예측 성능 주장 |
+| SSG analysis | Code, result CSVs, report, presentation, validation and change records | Separate source data; actual adoption or recruitment by a club |
+| SDA | Live website, curriculum, projects, magazine | Member records, administrator accounts, private operating repository |
+| AI research tool | Code, installation guide, tests, offline demo | Personal research data; unmeasured commercial outcomes |
+| Statiz, warehouse, mosquito, wind | Shareable descriptions of questions, methods, results, and lessons | Raw data, credentials, private submissions, independent verification beyond the summary |
+| MLB clustering | Analysis summary and public SDA archive | Equating latent-space metrics with proven strategy effects |
+| K League | Classifier-comparison learning record | Pre-match prediction claims before timing and split checks |
 
-## 보안과 공유
+## Privacy & Publication
 
-비공개 원자료나 인증정보를 포트폴리오 공개를 위해 이동하지 않습니다. 계정·명단·제출 제한이 있는 파일은 공개 범위를 먼저 확인합니다. 개인 연락처는 기존에 공개한 이메일만 사용합니다.
+Private source data and credentials are not moved into public repositories to improve presentation. Files containing accounts, member lists, or restricted submissions require a separate publication check. Contact details are limited to the email address already used publicly.
 
-## 업데이트 방법
+English case studies provide an accessible entry point. Original Korean reports, operational documents, and experiment logs are preserved rather than silently rewritten.
 
-- 프로젝트가 완료되면 상태·기준일·최종 결과물 링크를 함께 바꿉니다.
-- 새로운 점수를 추가할 때 평가 분할·지표·근거를 함께 기록합니다.
-- 기능을 종료하면 과거 구현 경험으로 남기되 현재 기능과 구분합니다.
-- 링크 변경 후 `python3 scripts/check_links.py`를 실행합니다.
+## Maintenance
 
-[포트폴리오](../README.md)
+- Update completion status, reference dates, and final artifact links together.
+- Record the evaluation split, metric, and evidence whenever adding a score.
+- Distinguish retired functionality from features that are still in use.
+- Keep English and Korean summaries aligned when changing substantive claims.
+- Run `python3 scripts/check_links.py` after changing links.
