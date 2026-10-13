@@ -1,44 +1,44 @@
-# BARAM 2026 | 시간 순서와 정보 시점을 지키는 발전량 예측
+# BARAM 2026 | Wind Power Forecasting
 
-**형태:** DACON 제3회 풍력발전량 예측 AI 경진대회 참여<br>
-**공개 범위:** 분석·실험 회고. 원자료·모델 파일·제출 이력은 비공개입니다.
+[Portfolio](../README.md) · [한국어](baram-2026-wind-power-forecast.ko.md)
 
-## 문제
+**Project type:** Participation in the third DACON Wind Power Forecasting AI Competition<br>
+**Public scope:** Analysis and experiment review. Raw data, model files, and submission records remain private.
 
-세 개 KPX 그룹의 시간별 풍력발전량을 예측했습니다. 실제 예측 시점에 얻을 수 있는 기상 정보만 사용하면서, 평균 오차와 정산 성공 지표를 함께 관리해야 했습니다.
+## The Problem
 
-## 핵심 결과
+Forecast hourly wind generation for three KPX groups using only weather information available at prediction time. The task required managing both normalized error and an incentive-related success metric.
 
-프로젝트 기록에서 확인한 최고 Public 총점은 **0.6563667041**입니다. 최종 Private 점수나 순위로 표현하지 않습니다. 이 사례에서 강조하는 경험은 모델 수보다 **시간 순서 검증, 입력 정보의 기준 시점, 변경 이력 관리**입니다.
+## Recorded Results
 
-| 평가 항목 | 기록된 최고 Public 후보 |
+The highest public composite score in the project records was **0.6563667041**. This is not a final private score or ranking. The emphasis of this case study is temporal validation, information availability, and experiment traceability.
+
+| Metric | Best Recorded Public Candidate |
 |---|---:|
-| 총점 | 0.6563667041 |
-| 1 − nMAE | 0.8748389571 |
+| Composite score | 0.6563667041 |
+| 1 - nMAE | 0.8748389571 |
 | FiCR | 0.4378944510 |
 
-프로젝트에서 사용한 총점 정의는 `0.5 × (1 − nMAE) + 0.5 × FiCR`입니다. 더 큰 모델이 자동으로 더 좋은 결과를 만드는 것은 아니었고, 일부 넓은 잔차 보정은 Public 성능을 악화시켰습니다.
+The recorded scoring formula was `0.5 * (1 - nMAE) + 0.5 * FiCR`. More complex models did not automatically improve results; some broad residual corrections degraded public performance.
 
-## 수행한 작업
+## Work Completed
 
-1. 기상 예측 발행 시각, 대상 시각, 예측 간격을 맞추고 입력 스키마를 확인했습니다.
-2. 2022→2023, 2023→2024의 시간 순서 검증으로 시기 변화에 대한 일반화를 살펴봤습니다.
-3. 부스팅·신경망·물리 및 기상 피처 접근을 비교했습니다.
-4. 기준 예측에서 한 번에 한 가설씩 변경하고 그룹·기간별 오차를 기록했습니다.
-5. 제출 전에 행 순서·키·결측·음수·설비 용량 범위를 점검했습니다.
+1. Aligned weather forecast issue times, target times, and forecast intervals, and checked input schemas.
+2. Used forward-in-time validation from 2022 to 2023 and from 2023 to 2024.
+3. Compared boosting, neural-network, and physics- and weather-feature approaches.
+4. Changed one hypothesis at a time from a reference prediction and logged errors by group and period.
+5. Checked row order, keys, missing values, negative predictions, and capacity limits before submission.
 
-## 배운 점과 한계
+## What I Learned
 
-내부 검증의 개선이 다음 해 데이터로 이어지지 않는 경우가 있었습니다. 모델의 복잡도뿐 아니라 오류가 겹치는 정도와 시간에 따른 분포 변화가 중요했습니다.
+An internal improvement did not always transfer to the following year. Error overlap and temporal distribution changes mattered alongside model complexity.
 
-Public 점수의 작은 차이를 반복 확인하는 과정에도 리더보드 적응 위험이 있습니다. 따라서 작은 Public 상승을 일반화 개선이나 인과적 증거로 단정하지 않습니다. 별도의 최종 평가와 현장 효과는 이 요약에서 확인하지 않았습니다.
+Repeatedly inspecting small public-score differences also creates leaderboard adaptation risk. A small gain is not automatically evidence of generalization or a causal explanation of why a change worked. Final evaluation and real-world operating impact were not established in this summary.
 
-개인·팀별 기여율은 공개 자료로 구분하지 않았으며, 이 페이지는 참여한 실험·검증 경험을 설명합니다.
+This page describes experiments and validation work in a project I participated in; it does not quantify individual versus team contributions.
 
-## 상세 기록
+## Further Reading
 
-후보별 점수, 변경 이력과 실패한 가설은 [실험 메모](../docs/baram-experiment-notes.md)에 보존했습니다. 성능 해석은 이 페이지의 검증 조건과 한계 설명을 함께 따릅니다.
+Detailed candidate scores, changes, and unsuccessful hypotheses remain in the [original experiment notes (Korean)](../docs/baram-experiment-notes.md). Interpret those records with the evaluation context and limitations above.
 
-**기술:** Python, Pandas, NumPy, LightGBM, CatBoost, XGBoost, PyTorch, 시계열 검증, 실험 관리
-
-[전체 포트폴리오로 돌아가기](../README.md)
+**Tools:** Python, Pandas, NumPy, LightGBM, CatBoost, XGBoost, PyTorch, temporal validation, experiment tracking.

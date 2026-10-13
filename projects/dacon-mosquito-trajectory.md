@@ -1,52 +1,52 @@
-# DACON 모기 비행 궤적 예측 AI 경진대회
+# DACON Mosquito Trajectory Prediction
 
-**읽을 포인트:** 물리 기반 기준 모델에서 출발해 유사 궤적을 활용한 보정으로 확장한 사례<br>
-**공개 범위:** 실험 요약. 대회 원자료·제출 파일과 원본 코드는 비공개입니다.
+[Portfolio](../README.md) · [한국어](dacon-mosquito-trajectory.ko.md)
 
-## 핵심 결과
+**Focus:** Physics baselines, residual correction, and retrieval of similar trajectories<br>
+**Public scope:** Experiment summary. Competition data, submission files, and source code remain private.
 
-단순히 평균 좌표 오차를 낮추는 대신, 예측점이 실제 위치에서 1cm 안에 들어오는지를 기준으로 접근을 바꿨습니다. 물리 모델을 유지하면서 잔차 보정과 유사 궤적 탐색을 실험했고, 프로젝트 회고에는 최고 Public 점수 0.6974와 최종 순위 56위가 기록되어 있습니다.
+## Overview
 
-## 개요
+Predict a mosquito's 3D position 80 milliseconds after the last observation. The evaluation rewarded predictions within a 1 cm radius, making the shape of the error distribution important, not just average coordinate error.
 
-모기의 짧은 3D 비행 궤적을 보고 마지막 관측 시점 기준 +80ms 위치를 예측하는 DACON AI 경진대회 프로젝트입니다.
+We retained a physics-based reference prediction while exploring residual corrections and conservative selection among similar trajectories.
 
-## 문제 정의
+## Task
 
-- 입력: -400ms부터 0ms까지 40ms 간격의 3D 좌표 11개
-- 출력: +80ms 시점의 x, y, z 좌표
-- 평가 지표: R-Hit@1cm
-- hit 조건: 예측점과 정답점의 3D Euclidean distance가 0.01m 이하
+- **Input:** Eleven 3D positions at 40 ms intervals, from -400 ms to 0 ms.
+- **Output:** The x, y, and z coordinates at +80 ms.
+- **Metric:** R-Hit@1cm.
+- **Hit condition:** 3D Euclidean distance between prediction and target of at most 0.01 m.
 
-## 접근 방식
+## Approach
 
-- 공식 스타일 constant velocity baseline 재현
-- physics anchor 기반 residual learning
-- 최근 속도, 가속도, jerk, turn angle, path efficiency 등 trajectory feature engineering
-- hit probability routing 및 candidate selector
-- 모기 비행 논문 기반 motion prior 실험
-- KNN memory selector와 trajectory similarity 기반 conservative selector 적용
+- Reproduced a constant-velocity baseline aligned with the official approach.
+- Explored residual learning around a physics-based reference.
+- Engineered velocity, acceleration, jerk, turning angle, and path-efficiency features.
+- Tested hit-probability routing and candidate selection.
+- Explored motion priors informed by mosquito-flight literature.
+- Used KNN memory and trajectory similarity for conservative candidate selection.
 
-## 주요 결과
+## Recorded Results
 
-- 공식 baseline 재현 점수: 0.6006
-- 최고 Public LB: 0.6974
-- 최종 순위: 56위
-- 생성 submission 후보 수: 1,084개
-- 최종 best family: KNN memory selector / Gaussian KNN selector / KNN consensus
+| Item | Project Record |
+|---|---|
+| Baseline reproduction score | 0.6006 |
+| Best public leaderboard score | 0.6974 |
+| Final rank recorded in the project review | 56 |
+| Generated candidate submission files | 1,084 |
+| Best recorded model family | KNN memory, Gaussian KNN, and KNN consensus selectors |
 
-`1,084개`는 **생성한 제출 후보 파일 수**이며 실제 대회 업로드 횟수가 아닙니다. 기준 모델의 검증 점수와 Public 점수는 평가 분할이 같다는 근거 없이 직접 개선율로 환산하지 않습니다. 순위와 점수는 프로젝트 기록 기준이며 이 페이지에 공식 리더보드 증빙은 첨부하지 않았습니다.
+The 1,084 files are **generated candidates, not the number of leaderboard uploads**. The baseline and public scores are not converted into an improvement rate without evidence that they use the same evaluation split. The score and rank above come from project records; official leaderboard evidence is not attached to this page.
 
-## 배운 점
+## What I Learned
 
-이 대회에서는 평균 오차를 낮추는 것보다 1cm boundary 근처의 샘플을 안정적으로 안쪽으로 넣는 전략이 중요했습니다. 따라서 broad replacement보다 strong physics anchor 주변의 작은 보정, conservative gate, memory-based candidate selection이 효과적이었습니다.
+Under a radius-based hit metric, getting predictions near the boundary just inside the accepted region can matter more than reducing mean error. The recorded experiments favored small corrections around a physics reference and conservative selection over broad replacement.
 
-## 사용 기술
+## Contribution & Limits
 
-Python, NumPy, Pandas, Scikit-learn, trajectory feature engineering, KNN, residual learning, experiment logging
+My project experience covered physics baselines, trajectory features, residual and selection models, and experiment logging. This summary does not quantify individual contribution or independent implementation.
 
-## 역할과 한계
+Exploring many candidates creates a risk of adapting to the public leaderboard. The best public score alone does not establish performance on unseen data.
 
-참여 과정에서 물리 기준 모델, 궤적 피처, 잔차·선택 모델, 실험 기록을 다뤘습니다. 공개 요약은 팀 내 기여율이나 독립 구현량을 의미하지 않습니다. 많은 후보를 검토한 만큼 리더보드 적응 위험이 있으며, Public 최고점만으로 보지 못한 데이터에 대한 성능을 보장하지 않습니다.
-
-[전체 포트폴리오로 돌아가기](../README.md)
+**Tools:** Python, NumPy, Pandas, scikit-learn, KNN, residual learning, trajectory features, experiment logging.
