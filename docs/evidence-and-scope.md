@@ -17,6 +17,8 @@ This guide explains what the portfolio demonstrates and what requires separate v
 
 | Case | Public Evidence | Private or Unverified Scope |
 |---|---|---|
+| Daily Friends | Live web service, architecture & security audit summary, synthetic/demo previews, dated automated test snapshot (126 tests) | 3-person operating repository, API/OAuth secrets, live user records, iOS App Store release, unmeasured MAU/retention |
+| MLB scouting pipeline | Public repository, diagnostic charts, front-office brief PDFs, runnable demo script | Actual MLB club adoption or scouting outcomes |
 | SSG analysis | Code, result CSVs, report, presentation, validation and change records | Separate source data; actual adoption or recruitment by a club |
 | SDA | Live website, curriculum, projects, magazine | Member records, administrator accounts, private operating repository |
 | AI research tool | Code, installation guide, tests, offline demo | Personal research data; unmeasured commercial outcomes |
